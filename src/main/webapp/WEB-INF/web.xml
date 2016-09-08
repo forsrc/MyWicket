@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	version="3.0">
+
+	<display-name>Archetype Created Web Application</display-name>
+
+	<context-param>
+		<param-name>configuration</param-name>
+		<param-value>deployment</param-value>
+	</context-param>
+
+	<!-- Parameter used by Spring to locate its context configuration used for 
+		creating a WebApplicationContext. -->
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>classpath:applicationContext.xml</param-value>
+	</context-param>
+
+	<filter>
+		<filter-name>wicket.spring</filter-name>
+		<filter-class>org.apache.wicket.protocol.http.WicketFilter</filter-class>
+		<init-param>
+			<param-name>applicationClassName</param-name>
+			<param-value>com.forsrc.wicket.WicketApplication</param-value>
+		</init-param>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>wicket.spring</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+
+
+
+	<!-- <listener> <listener-class>org.jboss.weld.environment.servlet.Listener</listener-class> 
+		</listener> -->
+
+
+	<!-- END CDI EXAMPLE APPLICATION -->
+
+	<!-- The WicketSesionFilter can be used to provide thread local access to 
+		servlets/ JSPs/ etc -->
+	<filter>
+		<filter-name>WicketSessionFilter</filter-name>
+		<filter-class>org.apache.wicket.protocol.http.servlet.WicketSessionFilter</filter-class>
+		<init-param>
+			<param-name>filterName</param-name>
+			<!-- expose the session of the input example app -->
+			<param-value>FormInputApplication</param-value>
+		</init-param>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>WicketSessionFilter</filter-name>
+		<url-pattern>/helloworldservlet/*</url-pattern>
+		<dispatcher>REQUEST</dispatcher>
+		<dispatcher>INCLUDE</dispatcher>
+	</filter-mapping>
+
+	<session-config>
+		<session-timeout>5</session-timeout>
+	</session-config>
+
+
+	<filter>
+		<filter-name>HelloWorldApplication</filter-name>
+		<filter-class>org.apache.wicket.protocol.http.WicketFilter</filter-class>
+		<init-param>
+			<param-name>applicationClassName</param-name>
+			<param-value>com.forsrc.wicket.demo.helloworld.HelloWorldApplication</param-value>
+		</init-param>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>HelloWorldApplication</filter-name>
+		<url-pattern>/helloworld/*</url-pattern>
+		<dispatcher>REQUEST</dispatcher>
+		<dispatcher>INCLUDE</dispatcher>
+	</filter-mapping>
+
+
+
+</web-app>
