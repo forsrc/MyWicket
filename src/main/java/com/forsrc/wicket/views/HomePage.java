@@ -1,13 +1,14 @@
-package com.forsrc.wicket;
+package com.forsrc.wicket.views;
 
 import java.util.Date;
 
-import org.apache.wicket.markup.html.WebPage;
+
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
-import org.apache.wicket.util.string.Strings;
 
-public class HomePage extends WebPage {
+import com.forsrc.wicket.base.views.BasePage;
+
+public class HomePage extends BasePage {
 
 	public HomePage() {
 		this(new PageParameters());

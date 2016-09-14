@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:wicket="http://wicket.apache.org">
+<head>
+<title>Wicket HomePage</title>
+</head>
+<body>
+	<h3>HomePage</h3>
+        <br/><br/>
+        <span wicket:id="message">message will be here</span>
+        <ul>
+        	<li><a href="/index.do">Spring MVC Page</a></li>
+        	<li><a href="/?wicket:bookmarkablePage=:com.forsrc.wicket.views.HelloPage">Wicket Page</a></li>
+        	<li><a href="/HelloPage.do">Spring MVC + Wicket Page</a></li>
+        </ul>
+</body>
+</html>
